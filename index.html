@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Sri Lakshmi!</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            overflow: hidden;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .first-page, .video-container, .final-message {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .first-page {
+            background-color: #ffb6c1;
+            position: relative;
+        }
+
+        .title {
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .surprise-button {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .surprise-button:hover {
+            background-color: #ff1493;
+        }
+
+        .video-container {
+            background-color: #000;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        video {
+            width: 50%;
+            height: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .cake {
+            width: 300px; /* Increased size */
+            margin: 20px 0;
+        }
+
+        .photos {
+            display: flex;
+            justify-content: center;
+        }
+
+        .photo {
+            width: 200px; /* Increased size */
+            height: auto;
+            margin: 0 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .photo:hover {
+            transform: scale(1.05); /* Pop-up effect on hover */
+        }
+
+        .final-message {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            background-color: #e6e6fa; /* Soft lavender background */
+            overflow: hidden; /* To contain balloons */
+        }
+
+        /* Balloons Animation for Last Page */
+        .balloons-last-page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .balloon-last {
+            position: absolute;
+            width: 50px;
+            height: 80px;
+            background-color: #ff4500;
+            border-radius: 20px;
+            animation: float 4s infinite;
+        }
+
+        .balloon-last1 { left: 15%; animation-delay: 0s; }
+        .balloon-last2 { left: 40%; animation-delay: 1s; }
+        .balloon-last3 { left: 65%; animation-delay: 2s; }
+        .balloon-last4 { left: 85%; animation-delay: 3s; }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- First Page: Beautiful Interface -->
+    <div class="first-page" id="first-page">
+        <h1 class="title">Welcome to the Surprise!</h1>
+        <button class="surprise-button" onclick="goToVideoPage()">Surprise Me!</button>
+    </div>
+
+    <!-- Second Page: Video -->
+    <div id="video-page" class="hidden">
+        <div class="video-container">
+            <video id="birthdayVideo" autoplay controls>
+                <source src="my_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <!-- Third Page: Message and Photos -->
+    <div id="message-page" class="hidden">
+        <div class="final-message">
+            <!-- Balloons background for the final page -->
+            <div class="balloons-last-page">
+                <div class="balloon-last balloon-last1"></div>
+                <div class="balloon-last balloon-last2"></div>
+                <div class="balloon-last balloon-last3"></div>
+                <div class="balloon-last balloon-last4"></div>
+            </div>
+            <h1>Happy Birthday, Sri Lakshmi!</h1>
+            <img src="cake.jpg" alt="Birthday Cake" class="cake">
+            <div class="photos">
+                <img src="photo1.jpg" alt="Photo with Sri Lakshmi" class="photo">
+                <img src="photo2.jpg" alt="Photo with Sri Lakshmi" class="photo">
+            </div>
+            <p>You are my best friend forever! Even though we are far apart, our friendship keeps growing stronger. Wishing you all the happiness and love on your special day! 🎉💖</p>
+        </div>
+    </div>
+
+    <script>
+        function goToVideoPage() {
+            // Hide the first page
+            document.getElementById("first-page").style.display = "none";
+
+            // Show the video page
+            document.getElementById("video-page").style.display = "block";
+
+            // Get the video element and force play via JavaScript
+            const video = document.getElementById("birthdayVideo");
+            video.play();  // This ensures autoplay
+
+            // When video ends, show the next page
+            video.onended = function() {
+                goToMessagePage();
+            };
+        }
+
+        function goToMessagePage() {
+            // Hide the video page
+            document.getElementById("video-page").style.display = "none";
+
+            // Show the final message and photos page
+            document.getElementById("message-page").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
